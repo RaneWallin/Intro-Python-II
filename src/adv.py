@@ -52,7 +52,7 @@ player_one = Player("Jordan", room['outside'])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-print(f"{bcolors.S_DESC}{player_one.current_room.short_description}{bcolors.CLEAR}")
+print(f"{bcolors.UNDER}{bcolors.S_DESC}{player_one.current_room.short_description}{bcolors.CLEAR}{bcolors.UNDER_OFF}")
 print(f"{bcolors.DESC}{player_one.current_room.description}{bcolors.CLEAR}")
 command = input("Enter a command ['q' to quite]: ")
 
@@ -75,6 +75,6 @@ while command != 'q':
     else:
         print(f"\n{bcolors.FAIL}You can't go that way!{bcolors.CLEAR}\n")
 
-    print(f"{bcolors.S_DESC}{player_one.current_room.short_description}{bcolors.CLEAR}")
+    print(f"{bcolors.UNDER}{bcolors.S_DESC}{player_one.current_room.short_description}{bcolors.CLEAR}{bcolors.UNDER_OFF}")
     print(f"{bcolors.DESC}{player_one.current_room.description}{bcolors.CLEAR}")
     command = input("Enter a command ['q' to quite]: ")
