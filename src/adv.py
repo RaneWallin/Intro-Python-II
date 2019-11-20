@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from bcolors import bcolors
 
 # Declare all the rooms
 
@@ -51,8 +52,8 @@ player_one = Player("Jordan", room['outside'])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-print(player_one.current_room.short_description)
-print(player_one.current_room.description)
+print(f"{bcolors.S_DESC}{player_one.current_room.short_description}{bcolors.CLEAR}")
+print(f"{bcolors.DESC}{player_one.current_room.description}{bcolors.CLEAR}")
 command = input("Enter a command ['q' to quite]: ")
 
 while command != 'q':
@@ -72,8 +73,8 @@ while command != 'q':
     if (next_room):
         player_one.current_room = next_room
     else:
-        print("You can't go that way!\n")
+        print(f"\n{bcolors.FAIL}You can't go that way!{bcolors.CLEAR}\n")
 
-    print(player_one.current_room.short_description)
-    print(player_one.current_room.description)
+    print(f"{bcolors.S_DESC}{player_one.current_room.short_description}{bcolors.CLEAR}")
+    print(f"{bcolors.DESC}{player_one.current_room.description}{bcolors.CLEAR}")
     command = input("Enter a command ['q' to quite]: ")
