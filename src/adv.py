@@ -1,4 +1,6 @@
 from room import Room
+from player import Player
+from bcolors import bcolors
 
 # Declare all the rooms
 
@@ -38,6 +40,7 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+player_one = Player("Jordan", room['outside'])
 
 # Write a loop that:
 #
@@ -49,3 +52,29 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+print(f"\n{bcolors.UNDER}{bcolors.S_DESC}{player_one.current_room.short_description}{bcolors.CLEAR}{bcolors.UNDER_OFF}")
+print(f"{bcolors.DESC}{player_one.current_room.description}{bcolors.CLEAR}")
+command = input("Enter a command ['q' to quite]: ")
+
+while True:
+    if (command == 'q'):
+        break;
+
+    next_room = None
+    if command == "n":
+        next_room = player_one.current_room.n_to
+    elif command == "s":
+        next_room = player_one.current_room.s_to
+    elif command == "e":
+        next_room = player_one.current_room.e_to
+    elif command == "w":
+        next_room = player_one.current_room.w_to
+
+    if (next_room):
+        player_one.current_room = next_room
+    else:
+        print(f"\n{bcolors.FAIL}You can't go that way!{bcolors.CLEAR}\n")
+
+    print(f"\n{bcolors.UNDER}{bcolors.S_DESC}{player_one.current_room.short_description}{bcolors.CLEAR}{bcolors.UNDER_OFF}")
+    print(f"{bcolors.DESC}{player_one.current_room.description}{bcolors.CLEAR}")
+    command = input("Enter a command ['q' to quite]: ")
